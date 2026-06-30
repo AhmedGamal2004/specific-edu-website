@@ -29,7 +29,7 @@ export const TEAM_MEMBERS: TeamMember[] = [
     specialty: "مصمم ومصنع المحتوى البصري ومونتير الفيديوهات (Video Editor & Motion Designer)",
     image: "images/team/ahmed_gamal.png",
     skills: ["Video Editing", "Motion Graphics", "Adobe Premiere", "After Effects", "Graphic Design"],
-    email: "ahmed.gamal@example.com",
+    email: "ahmedgashaaban569@gmail.com",
     whatsapp: "+201013815378"
   }
 ];
