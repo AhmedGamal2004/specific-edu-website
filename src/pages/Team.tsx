@@ -1,17 +1,8 @@
-import { useState } from "react";
-import { motion, AnimatePresence } from "framer-motion";
-import { Users, Mail, Github, Award, Sparkles, Check } from "lucide-react";
+import { motion } from "framer-motion";
+import { Users, Mail, Github, Award, Sparkles } from "lucide-react";
 import { TEAM_MEMBERS } from "../data/teamData";
 
 export default function Team() {
-  const [copiedId, setCopiedId] = useState<number | null>(null);
-
-  const handleEmailClick = (id: number, email: string) => {
-    navigator.clipboard.writeText(email);
-    setCopiedId(id);
-    setTimeout(() => setCopiedId(null), 2000);
-  };
-
   return (
     <div className="pt-24 min-h-screen bg-slate-50/50 relative overflow-hidden" dir="rtl">
       {/* Background ambient glows - High-End Pulsing Orbs */}
@@ -137,29 +128,15 @@ export default function Team() {
                     </a>
                   )}
                   {member.email && (
-                    <div className="relative">
-                      <a
-                        href={`mailto:${member.email}`}
-                        onClick={() => handleEmailClick(member.id, member.email!)}
-                        className="w-10 h-10 rounded-full bg-white/50 hover:bg-accent-soft text-text-muted hover:text-accent border border-slate-200/60 hover:border-accent/20 flex items-center justify-center transition-all duration-300 hover:scale-110 shadow-sm"
-                        title="البريد الإلكتروني (اضغط للمراسلة والنسخ تلقائياً)"
-                      >
-                        <Mail size={18} />
-                      </a>
-                      <AnimatePresence>
-                        {copiedId === member.id && (
-                          <motion.span
-                            initial={{ opacity: 0, y: 10, scale: 0.8 }}
-                            animate={{ opacity: 1, y: -45, scale: 1 }}
-                            exit={{ opacity: 0, y: -10, scale: 0.8 }}
-                            className="absolute left-1/2 -translate-x-1/2 bg-slate-950 text-white text-xs px-2.5 py-1.5 rounded-xl whitespace-nowrap shadow-lg flex items-center gap-1.5 z-20 pointer-events-none"
-                          >
-                            <Check size={12} className="text-green-400" />
-                            <span>تم نسخ الإيميل!</span>
-                          </motion.span>
-                        )}
-                      </AnimatePresence>
-                    </div>
+                    <a
+                      href={`https://mail.google.com/mail/?view=cm&fs=1&to=${member.email}`}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="w-10 h-10 rounded-full bg-white/50 hover:bg-accent-soft text-text-muted hover:text-accent border border-slate-200/60 hover:border-accent/20 flex items-center justify-center transition-all duration-300 hover:scale-110 shadow-sm"
+                      title="مراسلة عبر Gmail"
+                    >
+                      <Mail size={18} />
+                    </a>
                   )}
                   {member.github && (
                     <a
